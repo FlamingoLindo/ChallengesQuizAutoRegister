@@ -3,6 +3,7 @@
 A Python project that automates quiz registration and management by reading quiz data from Excel files and interacting with a web-based quiz platform using Selenium.
 
 ## 📋 Table of Contents
+
 - [Overview](#overview)
 - [Features](#features)
 - [Project Structure](#project-structure)
@@ -16,6 +17,7 @@ A Python project that automates quiz registration and management by reading quiz
 ## 🎯 Overview
 
 This project automates the process of:
+
 1. Reading quiz questions and answers from Excel files
 2. Processing the data using pandas
 3. Automatically registering quizzes on a web platform using Selenium WebDriver
@@ -30,7 +32,7 @@ This project automates the process of:
 
 ## 📁 Project Structure
 
-```
+```bash
 tedesafio/
 ├── main.py              # Main execution script
 ├── excel.py             # Excel file processing functions
@@ -50,11 +52,13 @@ tedesafio/
 ## 🚀 Installation
 
 1. **Clone or download the project:**
+
    ```bash
    cd tedesafio
    ```
 
 2. **Create and activate virtual environment:**
+
    ```bash
    python -m venv .venv
    .venv\Scripts\activate  # On Windows
@@ -62,6 +66,7 @@ tedesafio/
    ```
 
 3. **Install required packages:**
+
    ```bash
    pip install pandas selenium
    ```
@@ -77,6 +82,7 @@ tedesafio/
 1. **Prepare your Excel file** with quiz data (see format below)
 2. **Update configuration** in `main.py` if needed
 3. **Run the main script:**
+
    ```bash
    python main.py
    ```
@@ -84,6 +90,7 @@ tedesafio/
 ### Using Individual Modules
 
 #### Excel Processing
+
 ```python
 from excel import get_dataframe, get_values_from_columns
 
@@ -97,6 +104,7 @@ if values:
 ```
 
 #### Web Automation
+
 ```python
 from automate import automate_quiz_registration
 
@@ -124,8 +132,9 @@ Your Excel file should have the following columns (in order):
 | NÍVEL DE DIFICULDADE | Difficulty level |
 | QUANTIDADE DE PONTOS | Points for the question |
 
-### Example Row:
-```
+### Example Row
+
+```bash
 Question: "What is the capital of France?"
 Alternative 1: "London"
 Alternative 2: "Paris"
@@ -139,6 +148,7 @@ Points: 100
 ## ⚙️ Configuration
 
 ### Main Configuration (`main.py`)
+
 Update the following variables in `main.py`:
 
 ```python
@@ -152,7 +162,9 @@ master_password = 'your_password'
 ```
 
 ### Web Platform Settings
+
 The automation is currently configured for:
+
 - URL: `https://challenges-quiz-master.netlify.app/login-master`
 - Email field: `name="email"`
 - Password field: `name="password"`
@@ -168,14 +180,16 @@ Modify `automate.py` if your platform uses different selectors.
 
 ## 🐛 Troubleshooting
 
-### Common Issues:
+### Common Issues
 
 1. **ChromeDriver not found**: Ensure ChromeDriver is in your PATH or project directory
 2. **Excel file not loading**: Check file path and ensure the file is not open in Excel
 3. **Web automation fails**: Verify the website structure hasn't changed and credentials are correct
 
-### Error Handling:
+### Error Handling
+
 The project includes robust error handling for:
+
 - File not found errors
 - Invalid Excel formats
 - Web element not found
