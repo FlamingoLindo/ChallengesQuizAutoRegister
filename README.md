@@ -68,7 +68,7 @@ tedesafio/
 3. **Install required packages:**
 
    ```bash
-   pip install pandas selenium
+   pip install -r requirements.txt
    ```
 
 4. **Download Chrome WebDriver:**
