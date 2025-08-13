@@ -14,9 +14,9 @@ def main():
     get_values_from_columns(df, row_index=0)
 
     automate_quiz_registration(
-        'https://challenges-quiz-master.netlify.app/login-master',
-        'master@mestres.com',
-        'tralalerotralala',
+        '',
+        '',
+        '',
         df)
 
 
