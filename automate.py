@@ -8,7 +8,8 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 
 
-def automate_quiz_registration(master_url, master_login, master_password, df):
+def automate_quiz_registration(master_url, master_login, master_password, df,
+                               categ_num, module_num, start_date_value):
     """
     Function to automate quiz registration.
 
@@ -17,6 +18,9 @@ def automate_quiz_registration(master_url, master_login, master_password, df):
         master_login (str): Login email for the master account
         master_password (str): Password for the master account
         df (DataFrame): DataFrame containing quiz data
+        categ_num (int): Category number for the quiz
+        module_num (int): Module number for the quiz
+        start_date_value (str): Start date for the quiz
     """
     driver = webdriver.Chrome()
     wait = WebDriverWait(driver, 5)
@@ -47,10 +51,10 @@ def automate_quiz_registration(master_url, master_login, master_password, df):
         categ.click()
 
         # Seleciona a categoria de vendas
-        vendas = wait.until(EC.presence_of_element_located(
+        categ_opt = wait.until(EC.presence_of_element_located(
             (By.XPATH,
-             '//*[@id="react-select-category-option-0"]')))
-        vendas.click()
+             f'//*[@id="react-select-category-option-{categ_num}"]')))
+        categ_opt.click()
 
         # Abre o select de módulo
         module_select = wait.until(EC.presence_of_element_located(
@@ -61,7 +65,7 @@ def automate_quiz_registration(master_url, master_login, master_password, df):
         # Seleciona o módulo (TEM QUE SEMPRE ALTERAR ALI O ID)
         module = wait.until(EC.presence_of_element_located(
             (By.XPATH,
-             '//*[@id="react-select-module-option-9"]')))
+             f'//*[@id="react-select-module-option-{module_num}"]')))
         driver.execute_script("arguments[0].click();", module)
 
         # Abre o select de dificuldade
@@ -91,7 +95,7 @@ def automate_quiz_registration(master_url, master_login, master_password, df):
         start_date = wait.until(EC.presence_of_element_located(
             (By.NAME,
              'start_date')))
-        start_date.send_keys('13082025')
+        start_date.send_keys(start_date_value)
 
         # Preenche a hora de início
         start_time = wait.until(EC.presence_of_element_located(

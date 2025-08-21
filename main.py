@@ -17,7 +17,11 @@ def main():
         '',
         '',
         '',
-        df)
+        df,
+        categ_num=1,
+        module_num=4,
+        start_date_value='13082025'
+    )
 
 
 if __name__ == "__main__":
